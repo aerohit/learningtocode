@@ -20,3 +20,11 @@ cocentricCircles = map (Circle (Point 0 0)) [1, 2, 3]
 nudge :: Shape -> Float -> Float -> Shape
 nudge (Circle (Point x y) r) dx dy                  = Circle (Point (x+dx) (y+dy)) r
 nudge (Rectangle (Point x1 y1) (Point x2 y2)) dx dy = Rectangle (Point (x1+dx) (y1+dy)) (Point (x2+dx) (y2+dy))
+
+baseCircle :: Float -> Shape
+baseCircle r = Circle (Point 0 0) r
+
+baseRectangle :: Float -> Float -> Shape
+baseRectangle w h = Rectangle (Point 0 0) (Point w h)
+
+aRectangle = nudge (baseRectangle 40 100) 60 23
