@@ -1,3 +1,12 @@
+module Shapes
+( Point(..)
+, Shape(..)
+, surface
+, nudge
+, baseCircle
+, baseRectangle
+) where
+
 -- 'data' defines a new data type
 -- part before '=' is denotes the type
 -- the part after '=' are value constructors
