@@ -16,3 +16,8 @@ instance Show TrafficLight where
     show Red    = "Red Light"
     show Yellow = "Yellow Light"
     show Green  = "Green Light"
+
+instance (Equal m) => Equal (Maybe m) where
+    Just x .== Just y   = x .== y
+    Nothing .== Nothing = True
+    _ .== _             = False
