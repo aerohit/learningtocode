@@ -1,6 +1,12 @@
 class Ticket
+  VENUES = ["Convention Center", "Fairgrounds", "Town Hall"]
+
   def initialize(venue, date)
-    @venue = venue
+    if VENUES.include?(venue)
+      @venue = venue
+    else
+      raise ArgumentError, "Unknown venue #{venue}"
+    end
     @date  = date
   end
 
@@ -35,3 +41,6 @@ puts "The second is for an event on #{cc.date} at #{cc.venue} and costs #{cc.pri
 
 expensive = Ticket.most_expensive(th, cc)
 puts "The most expensive ticket is for #{expensive.venue}"
+
+puts "The possible list of venues are:"
+puts Ticket::VENUES
