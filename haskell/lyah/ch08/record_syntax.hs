@@ -4,9 +4,10 @@ data Person = Person { firstName   :: String
                      , height      :: Float
                      , phoneNumber :: String
                      , flavor      :: String
-                     } deriving (Show)
+                     } deriving (Show, Eq)
 
-guy = Person "Buddy" "Finklestein" 43 184.2 "526-2928" "Chocolate"
+guy  = Person "Buddy" "Finklestein" 43 184.2 "526-2928" "Chocolate"
+girl = Person "Broady" "Finklestein" 43 184.2 "526-2928" "Chocolate"
 
 data Car = Car { company         :: String
                , model           :: String
