@@ -13,6 +13,9 @@ data Car = Car { company         :: String
                , year            :: Int
                } deriving (Show)
 
+tellCar :: Car -> String
+tellCar (Car c m y) = "This " ++ c ++ " " ++ m ++ " was made in " ++ (show y) ++ "."
+
 ferrari = Car "Ferrari" "Ferrari" 1967
 -- order doesn't matter in record syntax
 mustang = Car {company="Ford", year=1967, model="Mustang"}
