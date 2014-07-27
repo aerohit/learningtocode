@@ -226,3 +226,26 @@ instance YesNo TrafficLight where
 
 yesnoIf :: (YesNo y) => y -> a -> a -> a
 yesnoIf yesnoVal yesResult noResult = if yesno yesnoVal then yesResult else noResult
+
+
+-- SECTION Functors
+
+class MyFunctor f where
+    myfmap :: (a -> b) -> f a -> f b
+
+instance MyFunctor List where
+    myfmap _ EmptyList   = EmptyList
+    myfmap fn (x :-: xs) = fn x :-: myfmap fn xs
+
+instance MyFunctor MyMaybe where
+    myfmap _ MyNothing   = MyNothing
+    myfmap fn (MyJust x) = MyJust (fn x)
+
+instance MyFunctor Tree where
+    myfmap _ EmptyTree            = EmptyTree
+    myfmap fn (Node x left right) = Node (fn x) (myfmap fn left) (myfmap fn right)
+
+instance MyFunctor (MyEither a) where
+    myfmap fn (MyLeft x)  = MyLeft x
+    myfmap fn (MyRight x) = MyRight (fn x)
+
