@@ -71,3 +71,21 @@ nmap <c-u> viwU
 nnoremap \ dd
 vnoremap \ U
 inoremap <c-d> <esc>ddi
+
+
+" ==================================
+" Ch06 - Leaders
+" ==================================
+
+nnoremap -d dd
+nnoremap -c ddO
+nnoremap <leader>d dd
+
+let mapleader = "-"
+let maplocalleader = "\\"
+" Note: localleader could be used for prefixing certain types of files.
+
+
+" ==================================
+" Ch08 - Abbreviations
+" ==================================
