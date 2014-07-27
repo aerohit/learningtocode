@@ -139,6 +139,8 @@ data MyMaybe a = MyNothing | MyJust a deriving (Show)
 
 mayBeA = MyJust 'A'
 
+data MyEither a b = MyLeft a | MyRight b deriving (Eq, Ord, Read, Show)
+
 data Vector a = Vector a a a deriving (Show)
 
 vectorAdd :: (Num t) => Vector t -> Vector t -> Vector t
