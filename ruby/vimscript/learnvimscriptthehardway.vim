@@ -95,3 +95,20 @@ iabbrev waht what
 iabbrev tehn then
 iabbrev @@      aerohit.saxena@gmail.com
 iabbrev ccopy   Copyright 2014 Rohit Saxena, all rights reserved.
+
+
+" ==================================
+" Ch09 - More mappings
+" ==================================
+
+" Supposed to surround the current word by ", but isn't working
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap H 0
+nnoremap L $
+
+
+" ==================================
+" Ch10 - Training your fingers
+" ==================================
+
+inoremap <esc> <nop>
