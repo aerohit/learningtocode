@@ -57,7 +57,7 @@ imap <c-d> <esc>ddi
 " To unmap
 nunmap \
 vunmap \
-iunmap \
+iunmap <c-d>
 
 " Upcase the current word
 imap <c-u> <esc>viwUi
@@ -89,3 +89,9 @@ let maplocalleader = "\\"
 " ==================================
 " Ch08 - Abbreviations
 " ==================================
+
+iabbrev adn and
+iabbrev waht what
+iabbrev tehn then
+iabbrev @@      aerohit.saxena@gmail.com
+iabbrev ccopy   Copyright 2014 Rohit Saxena, all rights reserved.
