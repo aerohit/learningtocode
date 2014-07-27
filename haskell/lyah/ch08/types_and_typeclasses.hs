@@ -70,11 +70,11 @@ mustang = Car {company="Ford", year=1967, model="Mustang"}
 -- SECTION Recursive data structures
 
 infixr 5 :-:          -- left-associative with fixity of 5
-data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
+data List a = EmptyList | a :-: (List a) deriving (Show, Read, Eq, Ord)
 
 infixr 5 .++
 (.++) :: List a -> List a -> List a
-Empty .++ ys      = ys
+EmptyList .++ ys      = ys
 (x :-: xs) .++ ys = x :-: (xs .++ ys)
 
 data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)
