@@ -249,3 +249,4 @@ instance MyFunctor (MyEither a) where
     myfmap fn (MyLeft x)  = MyLeft x
     myfmap fn (MyRight x) = MyRight (fn x)
 
+-- Skipped the section about Kinds.
