@@ -34,9 +34,40 @@ set number numberwidth=4
 " Ch03 - Basic Mapping
 " ==================================
 
+" To map keys
 map - ddp
 map _ ddkP
 map <space> viw
 map <c-d> dd
 
+" To unmap keys
+unmap <space>
+
 " Note: don't add a comment after map command
+
+
+" ==================================
+" Ch04 - Modal Mapping
+" ==================================
+
+nmap \ dd
+vmap \ U
+imap <c-d> <esc>ddi
+
+" To unmap
+nunmap \
+vunmap \
+iunmap \
+
+" Upcase the current word
+imap <c-u> <esc>viwUi
+nmap <c-u> viwU
+
+
+" ==================================
+" Ch05 - Strict Mapping
+" ==================================
+
+nnoremap \ dd
+vnoremap \ U
+inoremap <c-d> <esc>ddi
