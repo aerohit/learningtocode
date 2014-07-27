@@ -7,32 +7,28 @@ class Walrus
 
   def receive_gift!(gift)
     if gift.edible?
-      @energy += gift.energy
-      gift.digest!
+      @energy += gift.digest.energy
     end
   end
 end
 
-describe Walrus do
-  it "eats food" do
-    cheese = double(:edible? => true, :energy => 100)
-    expect(cheese).to receive(:digest!)
-    subject.receive_gift!(cheese)
+class LifeEvent
+  attr_reader :energy
+  def initialize(params)
+    @energy = params.fetch(:energy)
   end
+end
 
+describe Walrus do
   it "gains energy by eating food" do
-    cheese = double(:edible? => true, :energy => 100).as_null_object
+    cheese = double(:edible? => true,
+                    :digest => LifeEvent.new(:energy => 100))
     expect do
       subject.receive_gift!(cheese)
-    end.to change { subject.energy }.by(100)
+    end.to change { subject.energy }.by 100
   end
 
   it "ignores non-edible things" do
-    shoe = double(:edible? => false)
-    subject.receive_gift!(shoe)
-  end
-
-  it "does not gain energy from non-food" do
     shoe = double(:edible? => false)
     expect do
       subject.receive_gift!(shoe)
