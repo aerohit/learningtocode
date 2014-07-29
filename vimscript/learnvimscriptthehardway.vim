@@ -112,3 +112,88 @@ nnoremap L $
 " ==================================
 
 inoremap <esc> <nop>
+
+
+" ========================================
+" Ch11 - Buffer-Local Options and Mappings
+" ========================================
+
+" To define buffer specific mappings, use buffer mapping.
+" A good practice is to prefer localleader over leader for
+" buffer level mappings.
+nnoremap <buffer> <localleader>x dd
+
+setlocal wrap
+setlocal nowrap
+setlocal number
+setlocal nonumber
+
+" Shadowing, buffer level mappings are more specific and take precedence
+" over normal mappings. For example in the following example, the first
+" mapping would take precedence:
+nnoremap <buffer> Q x
+nnoremap          Q dd
+
+
+" ========================================
+" Ch12 - Autocommands
+" ========================================
+
+" Autocommands are a way to run certain commands when certain events happen.
+
+" Following command creates (and saves) a .txt file as soon as they
+" are opened for editing.
+autocmd BufNewFile *.txt :write
+
+autocmd BufWritePre *.html :normal gg=G
+
+" It's possible to bind to multiple events, for example following works on
+" reading and writing file.
+autocmd BufWritePre,BufRead *.html :normal gg=G
+
+autocmd BufNewFile,BufRead *.html setlocal nowrap
+
+" It's also possible to bind to FileType events
+" This event is fired when a buffers filetype is set.
+autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+autocmd FileType python     nnoremap <buffer> <localleader>c I#<esc>
+
+
+" ========================================
+" Ch13 - Buffer-Local Abbreviations
+" ========================================
+
+" Autocommands and Abbreviations could be combined to create a little snippet
+" system.
+autocmd FileType python     :iabbrev <buffer> iff if:<left>
+autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
+
+" For practices sake, some oft-repeated 'things' could be disabled, eg:
+iabbrev <buffer> return NOPENOPENOPE
+
+
+" ========================================
+" Ch14 - Autocommand Groups
+" ========================================
+
+" When sourcing an autocmd, the entire vimrc file is re-read. Which means that
+" the Autocommands would get duplicated as well. This would also mean that vim
+" runs slower. The solution is to group related Autocommands into named
+" groups.
+
+augroup testgroup
+    autocmd!
+    autocmd BufWrite * :echom "FOO"
+    autocmd BufWrite * :echom "BAR"
+augroup END
+
+augroup filetype_html
+    autocmd!
+    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+augroup END
+
+
+" ========================================
+" Ch15 - Operator-Pending Mappings
+" ========================================
+
