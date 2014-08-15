@@ -6,6 +6,16 @@
   <body>
     <div ng-controller="MyController">
       <h1>The time is {{ clock.now }}</h1>
+      <h4>A simple counter</h4>
+      <button ng-click="add(1)">Add</button>
+      <a ng-click="subtract(1)" class="button">Subtract</a>
+      <h4>Current count: {{ counter }}</h4>
+    </div>
+    <div ng-controller="ParentController">
+      <div ng-controller="ChildController">
+        <button ng-click="sayHello()">Say Hello</button>
+      </div>
+      {{ person }}
     </div>
     <script type="text/javascript" src="clock.js"></script>
   </body>

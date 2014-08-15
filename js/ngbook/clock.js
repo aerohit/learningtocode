@@ -11,4 +11,20 @@ myApp.controller('MyController', function ($scope, $timeout) {
         }, 1000);
   };
   updateClock();
+
+  $scope.counter = 0;
+
+  $scope.add = function(amount) { $scope.counter += amount; };
+  $scope.subtract = function(amount) { $scope.counter -= amount; };
+});
+
+myApp.controller('ParentController', function($scope) {
+  $scope.person = { greeted: false };
+});
+
+myApp.controller('ChildController', function($scope) {
+  $scope.sayHello = function() {
+    $scope.person.name = "Rohit";
+    $scope.person.greeted = true;
+  };
 });
