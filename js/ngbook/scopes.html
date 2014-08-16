@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myScopedApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+  </head>
+  <body>
+    <p>In $rootScope we can access: {{ rootProperty }}</p>
+    <div ng-controller="ParentController">
+      <p>
+        In ParentController we can access:
+        {{ rootProperty }} and
+        {{ parentProperty }}
+      </p>
+
+      <div ng-controller="ChildController">
+        <p>
+          In ChildController we can access:
+          {{ rootProperty }} and
+          {{ parentProperty }} and
+          {{ childProperty }}
+        </p>
+        <p>{{ fullSentenceFromChild }}</p>
+      </div>
+    </div>
+    <script type="text/javascript" src="scopes.js"></script>
+  </body>
+</html>
